@@ -33,6 +33,21 @@
     <ClInclude Include="Resource.h">
       <Filter>標頭檔</Filter>
     </ClInclude>
+    <ClInclude Include="CvvImage.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="tab1Dlg.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="tab2Dlg.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="tab3Dlg.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="RobotDefine.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MFC_CNCSystem.cpp">
@@ -42,6 +57,18 @@
       <Filter>原始程式檔</Filter>
     </ClCompile>
     <ClCompile Include="stdafx.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="CvvImage.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="tab1Dlg.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="tab2Dlg.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="tab3Dlg.cpp">
       <Filter>原始程式檔</Filter>
     </ClCompile>
   </ItemGroup>

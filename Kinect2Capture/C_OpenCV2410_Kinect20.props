@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <IncludePath>C:\Program Files\Microsoft SDKs\Kinect\v2.0_1409\inc;C:\OpenCV2410\opencv\build\include;C:\OpenCV2410\opencv\build\include\opencv2;C:\OpenCV2410\opencv\build\include\opencv;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\OpenCV2410\opencv\build\x86\vc12\lib;C:\Program Files\Microsoft SDKs\Kinect\v2.0_1409\Lib\x86;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <Link>
+      <AdditionalDependencies>opencv_core2410d.lib;opencv_core2410.lib;opencv_calib3d2410d.lib;opencv_calib3d2410.lib;opencv_highgui2410d.lib;opencv_highgui2410.lib;opencv_imgproc2410d.lib;opencv_imgproc2410.lib;opencv_features2d2410d.lib;opencv_features2d2410.lib;opencv_flann2410d.lib;opencv_flann2410.lib;opencv_video2410d.lib;opencv_video2410.lib;Kinect20.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup />
+</Project>

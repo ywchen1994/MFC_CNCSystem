@@ -4,6 +4,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MFC_CNCSystem", "MFC_CNCSystem\MFC_CNCSystem.vcxproj", "{E2DF6C9D-6BD3-42E7-8862-B1ED076D9E10}"
+	ProjectSection(ProjectDependencies) = postProject
+		{624D267C-CA69-4FEF-BAEE-7BD6E9F76D16} = {624D267C-CA69-4FEF-BAEE-7BD6E9F76D16}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Kinect2Capture", "Kinect2Capture\Kinect2Capture.vcxproj", "{F406BA08-8CE2-4AAA-9B77-AC716643092D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Modbus_Example", "..\..\Documents\Visual Studio 2015\Projects\Modbus_Pall\ConsoleApplication1.vcxproj", "{624D267C-CA69-4FEF-BAEE-7BD6E9F76D16}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +28,18 @@ Global
 		{E2DF6C9D-6BD3-42E7-8862-B1ED076D9E10}.Release|x64.Build.0 = Release|x64
 		{E2DF6C9D-6BD3-42E7-8862-B1ED076D9E10}.Release|x86.ActiveCfg = Release|Win32
 		{E2DF6C9D-6BD3-42E7-8862-B1ED076D9E10}.Release|x86.Build.0 = Release|Win32
+		{F406BA08-8CE2-4AAA-9B77-AC716643092D}.Debug|x64.ActiveCfg = Debug|Win32
+		{F406BA08-8CE2-4AAA-9B77-AC716643092D}.Debug|x86.ActiveCfg = Debug|Win32
+		{F406BA08-8CE2-4AAA-9B77-AC716643092D}.Debug|x86.Build.0 = Debug|Win32
+		{F406BA08-8CE2-4AAA-9B77-AC716643092D}.Release|x64.ActiveCfg = Release|Win32
+		{F406BA08-8CE2-4AAA-9B77-AC716643092D}.Release|x86.ActiveCfg = Release|Win32
+		{F406BA08-8CE2-4AAA-9B77-AC716643092D}.Release|x86.Build.0 = Release|Win32
+		{624D267C-CA69-4FEF-BAEE-7BD6E9F76D16}.Debug|x64.ActiveCfg = Debug|Win32
+		{624D267C-CA69-4FEF-BAEE-7BD6E9F76D16}.Debug|x86.ActiveCfg = Debug|Win32
+		{624D267C-CA69-4FEF-BAEE-7BD6E9F76D16}.Debug|x86.Build.0 = Debug|Win32
+		{624D267C-CA69-4FEF-BAEE-7BD6E9F76D16}.Release|x64.ActiveCfg = Release|Win32
+		{624D267C-CA69-4FEF-BAEE-7BD6E9F76D16}.Release|x86.ActiveCfg = Release|Win32
+		{624D267C-CA69-4FEF-BAEE-7BD6E9F76D16}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
