@@ -50,6 +50,9 @@ BEGIN_MESSAGE_MAP(CMFC_CNCSystemDlg, CDialogEx)
 	ON_NOTIFY(TCN_SELCHANGE, IDC_TAB, &CMFC_CNCSystemDlg::OnTcnSelchangeTab)
 	ON_BN_CLICKED(IDC_BUTTON_Start, &CMFC_CNCSystemDlg::OnBnClickedButtonStart)
 	
+	ON_BN_CLICKED(IDC_BUTTON2, &CMFC_CNCSystemDlg::OnBnClickedButton2)
+	ON_BN_CLICKED(IDC_BUTTON_station1, &CMFC_CNCSystemDlg::OnBnClickedButtonstation1)
+	ON_BN_CLICKED(IDC_BUTTON3, &CMFC_CNCSystemDlg::OnBnClickedButton3)
 END_MESSAGE_MAP()
 
 
@@ -270,8 +273,11 @@ void CMFC_CNCSystemDlg::Thread_StatementUpdate(LPVOID lParam)
 	}
 
 }
-void CMFC_CNCSystemDlg::Thread_Server_SixAxis(LPVOID lParam)
+void CMFC_CNCSystemDlg::Thread_Server_SixAxis(LPVOID lParam)//¥Ø«e¦³¿ù
 {
+	CMythreadParam * Thread_Info = (CMythreadParam *)lParam;
+	CMFC_CNCSystemDlg * hWnd = (CMFC_CNCSystemDlg *)CWnd::FromHandle((HWND)Thread_Info->hWnd);
+
 	CSocket client, serverSocket;
 	if (!AfxSocketInit())MessageBox(_T("Failed to Initialize Sockets"));
 	if (!serverSocket.Socket())MessageBox(_T("Create Faild"));
@@ -290,16 +296,19 @@ void CMFC_CNCSystemDlg::Thread_Server_SixAxis(LPVOID lParam)
 	axis6Package.XY_ready = false;
 	axis6Package.workDone = false;
 	axis6Package.beProcessed = true;
-
-	if (serverSocket.Accept(client))
-	{
-		while (true) {
+	while (true) {
+		if (serverSocket.Accept(client))	
+		{
 			if (axis6Package.beProcessed == false)
-			client.Send(reinterpret_cast<void*>(&axis6Package), sizeof(DataPackage));
-			axis6Package.beProcessed = true;
-
-			client.Receive(reinterpret_cast<void*>(&axis6Package), sizeof(DataPackage));
-			SixAxisDone = axis6Package.workDone;
+			{
+				client.Send(reinterpret_cast<void*>(&axis6Package), sizeof(DataPackage));
+				axis6Package.beProcessed = true;
+			}
+			if (axis6Package.beProcessed)
+			{
+				client.Receive(reinterpret_cast<void*>(&axis6Package), sizeof(DataPackage));
+				SixAxisDone = axis6Package.workDone;
+			}
 		}
 	}
 }
@@ -343,4 +352,20 @@ void CMFC_CNCSystemDlg::Thread_Server_Palletizing()
 }
 
 
+void CMFC_CNCSystemDlg::OnBnClickedButton2()
+{
+	PalletizingDone = true;
+}
 
+
+void CMFC_CNCSystemDlg::OnBnClickedButtonstation1()
+{
+	
+	StationOneStop = true;
+}
+
+
+void CMFC_CNCSystemDlg::OnBnClickedButton3()
+{
+	StationTwoStop = true;
+}

@@ -260,7 +260,6 @@ UINT tab2Dlg::Tab2threadFun(LPVOID LParam)
 	para->m_blthreading = FALSE;
 	para->m_case = 0xFF;
 	return 0;
-
 }
 
 void tab2Dlg::OnBnClickedButtonconnect()

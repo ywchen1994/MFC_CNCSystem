@@ -87,4 +87,8 @@ public:
 	/****************Others*********************/
 	CString m_CarStatement;
 	afx_msg void OnBnClickedButtonStart();
+	afx_msg void OnBnClickedButton2();
+	afx_msg void OnBnClickedButtonstation1();
+	afx_msg void OnBnClickedButton3();
+	void Thread_Server_SixAxis();
 };

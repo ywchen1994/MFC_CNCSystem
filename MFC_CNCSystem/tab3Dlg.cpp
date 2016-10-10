@@ -40,15 +40,17 @@ BOOL tab3Dlg::OnInitDialog()
 	CDialogEx::OnInitDialog();
 	m_CannyROI_Channel1.SetWindowPos(NULL, 10, 10, 320, 265, SWP_SHOWWINDOW);
 	m_Img_Object.SetWindowPos(NULL, 10, 10+ 265, 320, 265, SWP_SHOWWINDOW);
-	return TRUE;
-}
-
-
-void tab3Dlg::OnLButtonDown(UINT nFlags, CPoint point)
-{
 	m_threadPara.m_case = 0;
 	m_threadPara.hWnd = m_hWnd;
 	m_lpThread = AfxBeginThread(&tab3Dlg::Tab3threadFun, (LPVOID)&m_threadPara);
+	return TRUE;
+}
+
+void tab3Dlg::OnLButtonDown(UINT nFlags, CPoint point)
+{
+	/*m_threadPara.m_case = 0;
+	m_threadPara.hWnd = m_hWnd;
+	m_lpThread = AfxBeginThread(&tab3Dlg::Tab3threadFun, (LPVOID)&m_threadPara);*/
 
 	CDialogEx::OnLButtonDown(nFlags, point);
 }
@@ -133,8 +135,19 @@ void tab3Dlg::Thread_Image_CannyROI(LPVOID lParam)
 				cvCircle(Img_ApproxPoly_Ch3, CenterPoint, 2, CV_RGB(255, 0, 255), CV_FILLED);
 				hWnd->ShowImage(Img_ApproxPoly_Ch3, hWnd->GetDlgItem(IDC_IMAGE_Object),3);
 	
-				Img2SixAxis(&CornerPoint[0], CenterPoint, &CMFC_CNCSystemDlg::axis6Package.X, &CMFC_CNCSystemDlg::axis6Package.Y, &CMFC_CNCSystemDlg::axis6Package.Z, &CMFC_CNCSystemDlg::axis6Package.theta);
-				Sleep(600);
+				hWnd->Img2SixAxis(&CornerPoint[0], CenterPoint, &CMFC_CNCSystemDlg::axis6Package.X, &CMFC_CNCSystemDlg::axis6Package.Y, &CMFC_CNCSystemDlg::axis6Package.Z, &CMFC_CNCSystemDlg::axis6Package.theta);
+				Sleep(500);
+				/***********************************************************/
+				CString str;
+				str.Format(_T("%.2f  "), mainDlg.axis6Package.X);
+				hWnd->GetDlgItem(IDC_EDIT_XPos)->SetWindowText(str);
+				str.Format(_T("%.2f  "), mainDlg.axis6Package.Y);
+				hWnd->GetDlgItem(IDC_EDIT_YPos)->SetWindowText(str);
+				str.Format(_T("%.2f  "), mainDlg.axis6Package.Z);
+				hWnd->GetDlgItem(IDC_EDIT_ZPos)->SetWindowText(str);
+				str.Format(_T("%.2f  "), mainDlg.axis6Package.theta);
+				hWnd->GetDlgItem(IDC_EDIT_theta)->SetWindowText(str);
+
 				CMFC_CNCSystemDlg::axis6Package.beProcessed = false;
 			
 			}
@@ -307,11 +320,8 @@ void tab3Dlg::Img2SixAxis(CvPoint* CornerPoint, CvPoint CenterPoint, float * pRo
 
 	*pRobotX = mainDlg.kinect.CameraY * 1000 - mainDlg.KinectReferencePointXY.y + ROBOT_ORIGIN_OFFSET_X;
 	*pRobotY = mainDlg.kinect.CameraX * 1000-mainDlg.KinectReferencePointXY.x+  + ROBOT_ORIGIN_OFFSET_Y;
-	*pRobotZ = (mainDlg.tableReferenceDistance[CenterPoint.x][CenterPoint.y] - mainDlg.kinect.CameraZ * 1000);
-	GetDlgItem(IDC_EDIT_XPos)->SetWindowText(_T("%.2f", *pRobotX));
-	GetDlgItem(IDC_EDIT_YPos)->SetWindowText(_T("%.2f", *pRobotY));
-	GetDlgItem(IDC_EDIT_ZPos)->SetWindowText(_T("%.2f", *pRobotZ));
-	GetDlgItem(IDC_EDIT_theta)->SetWindowText(_T("%.2f",*theta));
+	*pRobotZ = (mainDlg.tableReferenceDistance[CenterPoint.x][CenterPoint.y] - mainDlg.kinect.CameraZ * 1000)+64;
+	
 }
 float tab3Dlg::getDegree(CvPoint2D32f first, CvPoint2D32f second)
 {
